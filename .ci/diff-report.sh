@@ -16,7 +16,7 @@ download-files)
 
   # get projects file
   echo "LINK: $LINK"
-  curl -vv --fail-with-body -X GET "$LINK" \
+  curl -vv --fail-with-body "$LINK" \
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: token $GITHUB_TOKEN" \
     -o ../project.properties
