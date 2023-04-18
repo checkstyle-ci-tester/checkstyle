@@ -139,6 +139,7 @@ jobs:
           cd checkstyle
           echo "This is a test"
           echo ""
+          echo $(curl --version)
           ./.ci/diff-report.sh download-files
           cd ../
 
