@@ -22,6 +22,7 @@ download-files)
     -o ../project.properties
 
   if [ -n "$NEW_MODULE_CONFIG_LINK" ]; then
+    echo "NEW_MODULE_CONFIG_LINK: $NEW_MODULE_CONFIG_LINK"
     curl --fail-with-body -X GET "${NEW_MODULE_CONFIG_LINK}" \
       -H "Accept: application/vnd.github+json" \
       -H "Authorization: token $GITHUB_TOKEN" \
