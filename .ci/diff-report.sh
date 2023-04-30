@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 source ./.ci/util.sh
 
@@ -44,12 +45,15 @@ download-files)
   LINK="${LINK_FROM_PR:-$DEFAULT_PROJECTS_LINK}"
 
   # get projects file
-  curl --fail-with-body -X GET "${LINK}" \
+  echo "LINK: $LINK"
+  curl -vv --fail-with-body "$LINK" \
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: token $GITHUB_TOKEN" \
     -o ../project.properties
 
+
   if [ -n "$NEW_MODULE_CONFIG_LINK" ]; then
+    echo "NEW_MODULE_CONFIG_LINK: $NEW_MODULE_CONFIG_LINK"
     curl --fail-with-body -X GET "${NEW_MODULE_CONFIG_LINK}" \
       -H "Accept: application/vnd.github+json" \
       -H "Authorization: token $GITHUB_TOKEN" \
